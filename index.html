@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio of Renuga Veeraragavan - Certified Salesforce Developer">
+    <title>Renuga Veeraragavan - Salesforce Developer Portfolio</title>
+    
+    <style>
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        /* === MAIN CONTAINER === */
+        .portfolio-container {
+            background: var(--bg-white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            width: 100%;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* === HEADER === */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        /* === TABS NAVIGATION === */
+        .tabs-nav {
+            display: flex;
+            background-color: var(--bg-light);
+            border-bottom: 2px solid var(--border-color);
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        
+        .tabs-nav::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .tabs-nav::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+        
+        .tabs-nav::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 1.2rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .tab-btn:hover {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+            background-color: var(--bg-white);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        /* === TAB CONTENT === */
+        .tabs-content {
+            padding: 3rem 2rem;
+            min-height: 500px;
+        }
+        
+        .tab-panel {
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+        
+        .tab-panel.active {
+            display: block;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* === HOME TAB === */
+        .home-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .home-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .home-content .tagline {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .home-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* === ABOUT TAB === */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .info-box h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+        
+        .info-item .icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 30px;
+        }
+        
+        /* === SKILLS TAB === */
+        .skills-section h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .skill-card {
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-white));
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .skill-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-card .level {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* === PROJECTS TAB === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: var(--bg-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .project-header .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-header h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-body {
+            padding: 1.5rem;
+        }
+        
+        .project-body p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--primary-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            gap: 1rem;
+        }
+        
+        /* === EDUCATION TAB === */
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .education-item {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .education-item::before {
+            content: '🎓';
+            position: absolute;
+            left: -15px;
+            top: 2rem;
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .education-item h4 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-item .school {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-item .year {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .education-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* === CONTACT TAB === */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-content h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-content > p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-white));
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+        
+        .contact-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h4 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card p {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* === FOOTER === */
+        .footer {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer p {
+            opacity: 0.8;
+        }
+        
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .tabs-nav {
+                flex-wrap: nowrap;
+            }
+            
+            .tab-btn {
+                font-size: 0.9rem;
+                padding: 1rem;
+                min-width: 100px;
+            }
+            
+            .tabs-content {
+                padding: 2rem 1rem;
+                min-height: 400px;
+            }
+            
+            .home-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .tab-btn {
+                font-size: 0.85rem;
+                padding: 0.8rem 0.5rem;
+                min-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>Renuga Veeraragavan</h1>
+            <p>Certified Salesforce Developer | 9+ Years Experience | Java to Cloud Expert</p>
+        </div>
+
+        <!-- TABS NAVIGATION -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="home">🏠 Home</button>
+            <button class="tab-btn" data-tab="about">👤 About</button>
+            <button class="tab-btn" data-tab="skills">⚡ Skills</button>
+            <button class="tab-btn" data-tab="projects">💼 Projects</button>
+            <button class="tab-btn" data-tab="education">🎓 Education</button>
+            <button class="tab-btn" data-tab="contact">📬 Contact</button>
+        </div>
+
+        <!-- TABS CONTENT -->
+        <div class="tabs-content">
+            <!-- HOME TAB -->
+            <div class="tab-panel active" id="home">
+                <div class="home-content">
+                    <div class="profile-image">☁️</div>
+                    <h2>Welcome to Renuga Portfolio</h2>
+                    <p class="tagline">Transforming Business Processes with Salesforce</p>
+                    <p>
+                        I'm a seasoned Salesforce Developer with 9+ years of comprehensive software development experience. 
+                        Starting my career as a Java developer, I transitioned into the Salesforce ecosystem and have been 
+                        architecting scalable cloud solutions ever since.
+                    </p>
+                    <p>
+                        As a triple-certified Salesforce professional (Admin, Platform Developer I & II), I specialize in 
+                        building robust applications on the Salesforce platform, implementing complex business logic with Apex, 
+                        creating intuitive user experiences with Lightning Web Components, and integrating Salesforce with 
+                        enterprise systems.
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="switchTab('projects')">View My Work</button>
+                        <button class="btn btn-secondary" onclick="switchTab('contact')">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT TAB -->
+            <div class="tab-panel" id="about">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>About Me</h3>
+                        <p>
+                            Hello! I'm a certified Salesforce Developer with 9+ years of experience in software development. 
+                            My journey began as a Java developer, where I built a strong foundation in object-oriented 
+                            programming, design patterns, and enterprise application development.
+                        </p>
+                        <p>
+                            Recognizing the transformative potential of cloud platforms, I transitioned to Salesforce 
+                            development and haven't looked back. My background in Java gave me a unique advantage in 
+                            mastering Apex, understanding the platform's architecture, and building scalable solutions 
+                            that align with Salesforce best practices.
+                        </p>
+                        <p>
+                            I specialize in custom application development, complex integrations, workflow automation, 
+                            and data migration. Whether it's building Lightning Web Components, implementing triggers and 
+                            batch processes, or architecting multi-org strategies, I bring technical excellence and 
+                            business acumen to every project.
+                        </p>
+                        <p>
+                            I'm passionate about staying current with Salesforce releases, earning new certifications, 
+                            and sharing knowledge with the Trailblazer community. I believe in writing clean, maintainable 
+                            code that follows Salesforce development best practices and delivers real business value.
+                        </p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Quick Facts</h3>
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <span>Based in Chennai, India</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">💼</span>
+                            <span>9+ years in software development</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">☁️</span>
+                            <span>Salesforce certified professional</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">🏆</span>
+                            <span>Salesforce Admin + Platform Dev I & II Certified </span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">☕</span>
+                            <span>Started as Java Developer</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">🚀</span>
+                            <span>Lightning Web Components Expert</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">🔧</span>
+                            <span>Integration Specialist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKILLS TAB -->
+            <div class="tab-panel" id="skills">
+                <div class="skills-section">
+                    <h3>Technical Skills & Expertise</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="icon">☁️</div>
+                            <h4>Apex</h4>
+                            <p class="level">Expert</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">⚡</div>
+                            <h4>Lightning Web Components</h4>
+                            <p class="level">Expert</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">🎨</div>
+                            <h4>Visualforce</h4>
+                            <p class="level">Advanced</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">🔌</div>
+                            <h4>REST/SOAP APIs</h4>
+                            <p class="level">Expert</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">☕</div>
+                            <h4>Java</h4>
+                            <p class="level">Expert</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">⚙️</div>
+                            <h4>Process Builder/Flow</h4>
+                            <p class="level">Advanced</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">🗄️</div>
+                            <h4>SOQL/SOSL</h4>
+                            <p class="level">Expert</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">🔐</div>
+                            <h4>Security & Sharing</h4>
+                            <p class="level">Advanced</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">📊</div>
+                            <h4>Reports & Dashboards</h4>
+                            <p class="level">Advanced</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">🔄</div>
+                            <h4>Data Migration</h4>
+                            <p class="level">Expert</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">🐙</div>
+                            <h4>Git/Version Control</h4>
+                            <p class="level">Expert</p>
+                        </div>
+                        <div class="skill-card">
+                            <div class="icon">🚀</div>
+                            <h4>CI/CD (Jenkins/GitHub)</h4>
+                            <p class="level">Advanced</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECTS TAB -->
+            <div class="tab-panel" id="projects">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="icon">🏥</div>
+                            <h4>Healthcare CRM Solution</h4>
+                        </div>
+                        <div class="project-body">
+                            <p>
+                                Built a comprehensive patient management system on Salesforce Health Cloud with custom 
+                                objects, automated workflows, and HIPAA-compliant data handling. Integrated with external 
+                                EHR systems via REST APIs.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Apex</span>
+                                <span class="tech-tag">Health Cloud</span>
+                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">LWC</span>
+                            </div>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="icon">💰</div>
+                            <h4>Financial Services Platform</h4>
+                        </div>
+                        <div class="project-body">
+                            <p>
+                                Developed a custom lending application with complex approval processes, automated 
+                                document generation, and integration with credit scoring services. Implemented 
+                                trigger frameworks and batch processing.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Apex Triggers</span>
+                                <span class="tech-tag">Batch Apex</span>
+                                <span class="tech-tag">Visualforce</span>
+                                <span class="tech-tag">SOAP Integration</span>
+                            </div>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="icon">📱</div>
+                            <h4>Mobile Field Service App</h4>
+                        </div>
+                        <div class="project-body">
+                            <p>
+                                Created a Lightning Web Component-based mobile application for field technicians 
+                                with offline capabilities, real-time scheduling, and GPS integration for service 
+                                optimization.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Lightning Web Components</span>
+                                <span class="tech-tag">Field Service</span>
+                                <span class="tech-tag">Mobile</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="icon">🔄</div>
+                            <h4>ERP Integration Hub</h4>
+                        </div>
+                        <div class="project-body">
+                            <p>
+                                Architected bidirectional integration between Salesforce and SAP ERP using 
+                                middleware platform. Implemented real-time order synchronization and automated 
+                                data validation processes.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Integration</span>
+                                <span class="tech-tag">MuleSoft</span>
+                                <span class="tech-tag">REST/SOAP</span>
+                                <span class="tech-tag">Apex</span>
+                            </div>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="icon">📊</div>
+                            <h4>Sales Analytics Dashboard</h4>
+                        </div>
+                        <div class="project-body">
+                            <p>
+                                Built interactive Lightning dashboards with custom Einstein Analytics integration 
+                                for real-time sales forecasting, pipeline analysis, and KPI tracking across 
+                                multiple business units.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Einstein Analytics</span>
+                                <span class="tech-tag">Lightning Components</span>
+                                <span class="tech-tag">SOQL</span>
+                                <span class="tech-tag">Apex REST</span>
+                            </div>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="icon">🔐</div>
+                            <h4>Multi-Org Data Migration</h4>
+                        </div>
+                        <div class="project-body">
+                            <p>
+                                Led enterprise-wide data migration from legacy CRM to Salesforce, handling 5M+ 
+                                records with complex relationships. Implemented data quality rules and automated 
+                                validation scripts.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Data Loader</span>
+                                <span class="tech-tag">Apex Batch</span>
+                                <span class="tech-tag">ETL</span>
+                                <span class="tech-tag">Data Quality</span>
+                            </div>
+                            <a href="#" class="project-link">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EDUCATION TAB -->
+            <div class="tab-panel" id="education">
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <h4>Salesforce Certified Platform Developer II</h4>
+                        <div class="school">Salesforce</div>
+                        <div class="year">2018</div>
+                        <p>
+                            Advanced certification demonstrating expertise in complex Salesforce development including 
+                            advanced Apex programming, asynchronous processing, integration patterns, and deployment 
+                            strategies. Validates ability to design and implement sophisticated business logic.
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h4>Salesforce Certified Platform Developer I</h4>
+                        <div class="school">Salesforce</div>
+                        <div class="year">2017</div>
+                        <p>
+                            Professional certification covering declarative development, Apex programming, Visualforce, 
+                            Lightning Components, data modeling, security, and testing. Foundation for building 
+                            custom applications on the Salesforce platform.
+                        </p>
+                    </div>
+
+                    <div class="education-item">
+                        <h4>Salesforce Certified Administrator</h4>
+                        <div class="school">Salesforce</div>
+                        <div class="year">2016</div>
+                        <p>
+                            Certification validating knowledge of Salesforce configuration, security model, data management, 
+                            automation tools (Flow, Process Builder, Workflow), reports & dashboards, and best practices 
+                            for maintaining a Salesforce org.
+                        </p>
+                    </div>
+                    
+                     <div class="education-item">
+                        <h4>Java Enterprise Development Training</h4>
+                        <div class="school">Infosys Training </div>
+                        <div class="year">2010</div>
+                        <p>
+                            Intensive training in Java EE technologies including Spring Framework, Hibernate ORM, 
+                            RESTful web services, Maven, and enterprise design patterns. This foundation proved 
+                            invaluable when transitioning to Salesforce Apex development.
+                        </p>
+                    </div>
+                    
+                    <div class="education-item">
+                        <h4>Bachelor of Engineering in Information Technology</h4>
+                        <div class="school">Avinashilingam University</div>
+                        <div class="year">2005 - 2009</div>
+                        <p>
+                            Comprehensive study in computer science fundamentals including data structures, algorithms, 
+                            object-oriented programming with Java, database systems, software engineering principles, 
+                            and web technologies. Strong foundation in Java development.
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- CONTACT TAB -->
+            <div class="tab-panel" id="contact">
+                <div class="contact-content">
+                    <h3>Let's Connect!</h3>
+                    <p>
+                        I'm always open to new opportunities, collaborations, and interesting conversations. 
+                        Whether you have a project in mind, want to discuss technology, or just say hello, 
+                        feel free to reach out through any of the channels below.
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <a href="mailto:your.email@example.com" class="contact-card">
+                            <div class="icon">📧</div>
+                            <h4>Email</h4>
+                            <p>renuga@gmail.com</p>
+                        </a>
+                        
+                        <a href="tel:+1234567890" class="contact-card">
+                            <div class="icon">📱</div>
+                            <h4>Phone</h4>
+                            <p>+1 (234) 567-890</p>
+                        </a>
+                        
+                        <div class="contact-card">
+                            <div class="icon">📍</div>
+                            <h4>Location</h4>
+                            <p>Chennai, India</p>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1.5rem;">Find Me Online</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/yourusername" target="_blank" class="social-link" title="GitHub">💻</a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-link" title="LinkedIn">💼</a>
+                        <a href="https://twitter.com/yourusername" target="_blank" class="social-link" title="Twitter">🐦</a>
+                        <a href="https://dev.to/yourusername" target="_blank" class="social-link" title="Dev.to">📝</a>
+                        <a href="https://stackoverflow.com/users/yourid" target="_blank" class="social-link" title="Stack Overflow">📚</a>
+                    </div>
+
+                    <div style="margin-top: 3rem;">
+                        <a href="mailto:Renuga@gmail.com" class="btn btn-primary">Email me @</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>&copy; 2026 Renuga Veeraragavan. Crafted with ❤️ using HTML, CSS & JavaScript.</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        function switchTab(tabName) {
+            // Remove active class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active class to selected button and panel
+            const selectedButton = document.querySelector(`[data-tab="${tabName}"]`);
+            const selectedPanel = document.getElementById(tabName);
+
+            if (selectedButton && selectedPanel) {
+                selectedButton.classList.add('active');
+                selectedPanel.classList.add('active');
+
+                // Scroll to top of content
+                document.querySelector('.tabs-content').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }
+        }
+
+        // Add click event listeners to tab buttons
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                switchTab(tabName);
+            });
+        });
+
+        // Make switchTab function available globally for button onclick
+        window.switchTab = switchTab;
+
+        // Add keyboard navigation for tabs
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                const activeButton = document.querySelector('.tab-btn.active');
+                const allButtons = Array.from(tabButtons);
+                const currentIndex = allButtons.indexOf(activeButton);
+                
+                let newIndex;
+                if (e.key === 'ArrowRight') {
+                    newIndex = (currentIndex + 1) % allButtons.length;
+                } else {
+                    newIndex = (currentIndex - 1 + allButtons.length) % allButtons.length;
+                }
+                
+                const newTabName = allButtons[newIndex].getAttribute('data-tab');
+                switchTab(newTabName);
+            }
+        });
+
+        // Add smooth scroll animation to skill cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 50);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animatable elements
+        document.querySelectorAll('.skill-card, .project-card, .education-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.5s ease';
+            observer.observe(el);
+        });
+
+        console.log('Portfolio loaded successfully! 🚀');
+        console.log('Use Arrow Left/Right keys to navigate between tabs');
+    </script>
+</body>
+</html>
